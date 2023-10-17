@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CrownSeal Application</title>
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+
+<div class="container w-50 p-3">
+    <h1 class="display-5" style="text-align: center;">Report Problem</h1>
+
+    <form action="#" th:action="@{/problems/add}" method="POST">
+        <div class="mb-3">
+            <label for="inputName">รหัสของเครื่องจักร</label>
+            <input id="inputName" type="input" class="form-control"
+                   name="nameMachine">
+        </div>
+        <div class="mb-3">
+            <label for="inputPrice">ระบุปัญหาของเครื่องจักร</label>
+            <input id="inputPrice" type="input" class="form-control"
+                   name="detail">
+        </div>
+        <div class="mb-3">
+            <label for="inputPrice">แจ้งสถานที่ที่ชำรุด</label>
+            <input id="inputLocation" type="input" class="form-control"
+                   name="location">
+        </div>
+        <button id="submit-button" type="submit" class="btn btn-primary">รายงานปัญหา</button>
+    </form>
+</div>
+
+</body>
+</html>
