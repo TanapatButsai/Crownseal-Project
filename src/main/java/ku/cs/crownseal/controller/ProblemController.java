@@ -3,6 +3,7 @@ package ku.cs.crownseal.controller;
 import ku.cs.crownseal.model.ProblemRequest;
 import ku.cs.crownseal.service.ProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,8 +31,8 @@ public class ProblemController {
     }
 
     @PostMapping("/add")
-    public String createProblem(@ModelAttribute ProblemRequest problem, Model model) {
-        problemService.createProblem(problem);
+    public String createProblem(@ModelAttribute ProblemRequest problem, Authentication authentication) {
+        problemService.createProblem(problem, authentication.getName());
         return "redirect:/problems";
     }
 

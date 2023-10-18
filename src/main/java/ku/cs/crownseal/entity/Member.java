@@ -1,17 +1,17 @@
 package ku.cs.crownseal.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 
 @Data
 @Entity
-public class Customer {
+public class Member {
 
     @Id
     @GeneratedValue
@@ -23,4 +23,9 @@ public class Customer {
     private String role;
     private String email;
     private String phoneNumber;
+
+    @OneToMany(mappedBy = "member") // "member" is the name of the field in the PurchaseOrder class
+    private List<Problem> ProblemList = new ArrayList<>();
+
+
 }

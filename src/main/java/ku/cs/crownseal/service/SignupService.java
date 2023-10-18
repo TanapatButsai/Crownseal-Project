@@ -1,8 +1,7 @@
 package ku.cs.crownseal.service;
 
-import ku.cs.crownseal.entity.Customer;
+import ku.cs.crownseal.entity.Member;
 import ku.cs.crownseal.model.SignupRequest;
-import ku.cs.crownseal.repository.CustomerRepository;
 import ku.cs.crownseal.repository.CustomerRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,7 @@ public class SignupService {
 
 
     public void createUser(SignupRequest customer) {
-        Customer record =  modelMapper.map(customer, Customer.class);
+        Member record =  modelMapper.map(customer, Member.class);
 
         record.setRole("ROLE_CUSTOMER");
 
@@ -43,7 +42,7 @@ public class SignupService {
     }
 
 
-    public Customer getUser(String username) {
+    public Member getUser(String username) {
         return repository.findByUsername(username);
     }
 

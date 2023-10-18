@@ -1,7 +1,7 @@
 package ku.cs.crownseal.service;
 
 
-import ku.cs.crownseal.entity.Customer;
+import ku.cs.crownseal.entity.Member;
 import ku.cs.crownseal.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,7 +28,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
             throws UsernameNotFoundException {
 
 
-        Customer user = userRepository.findByUsername(username);
+        Member user = userRepository.findByUsername(username);
 
 
         if (user == null) {

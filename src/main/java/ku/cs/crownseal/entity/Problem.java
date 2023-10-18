@@ -1,8 +1,6 @@
 package ku.cs.crownseal.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 
@@ -24,4 +22,13 @@ public class Problem {
     private String location;
     private String status;
 
+
+
+    @ManyToOne
+    @JoinColumn(name = "member_id") // "member_id" is the foreign key column in the PurchaseOrder table
+    private Member member;
+
+    @OneToOne
+    @JoinColumn(name = "work_order_id")
+    private WorkOrder workOrder;
 }
