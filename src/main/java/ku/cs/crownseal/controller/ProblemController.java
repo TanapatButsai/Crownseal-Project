@@ -19,8 +19,8 @@ public class ProblemController {
 
 
     @GetMapping
-    public String getAllProblem(Model model) {
-        model.addAttribute("problems", problemService.getAllProblem());
+    public String getAllProblem(Model model,Authentication authentication) {
+        model.addAttribute("problems", problemService.getMemberProblem(authentication.getName()));
         return "problem-all";
     }
 

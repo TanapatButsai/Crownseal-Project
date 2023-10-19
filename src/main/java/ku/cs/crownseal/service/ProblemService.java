@@ -26,10 +26,13 @@ public class ProblemService {
 
 
     public List<Problem> getAllProblem() {
+
         return problemRepository.findAll();
     }
 
-
+    public List<Problem> getMemberProblem(String name) {
+        return customerRepository.findByUsername(name).getProblemList();
+    }
     public void createProblem(ProblemRequest request,String name) {
         Problem record = modelMapper.map(request, Problem.class);
         record.setMember(customerRepository.findByUsername(name));
