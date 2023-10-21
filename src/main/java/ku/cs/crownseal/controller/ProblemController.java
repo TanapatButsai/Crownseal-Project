@@ -18,12 +18,11 @@ public class ProblemController {
     private ProblemService problemService;
 
 
-    @GetMapping
-    public String getAllProblem(Model model,Authentication authentication) {
+    @GetMapping("/my")
+    public String getMemberProblem(Model model,Authentication authentication) {
         model.addAttribute("problems", problemService.getMemberProblem(authentication.getName()));
         return "problem-all";
     }
-
 
     @GetMapping("/add")
     public String getProblemForm(Model model) {
@@ -33,7 +32,7 @@ public class ProblemController {
     @PostMapping("/add")
     public String createProblem(@ModelAttribute ProblemRequest problem, Authentication authentication) {
         problemService.createProblem(problem, authentication.getName());
-        return "redirect:/problems";
+        return "redirect:/problems/my";
     }
 
 

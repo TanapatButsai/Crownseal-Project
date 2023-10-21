@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -30,6 +31,8 @@ public class ProblemService {
         return problemRepository.findAll();
     }
 
+    public Problem getByID(UUID problemId){ return problemRepository.findById(problemId).get();}
+
     public List<Problem> getMemberProblem(String name) {
         return customerRepository.findByUsername(name).getProblemList();
     }
@@ -40,4 +43,5 @@ public class ProblemService {
         record.setStatus("ยังไม่ดำเนินการ");
         problemRepository.save(record);
     }
+
 }
