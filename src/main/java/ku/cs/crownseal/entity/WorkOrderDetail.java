@@ -14,7 +14,7 @@ public class WorkOrderDetail {
     private UUID id;
 
     private String detail;
-    int age;
+
     @ManyToOne
     @JoinColumn(name = "work_order_id")
     private WorkOrder workOrder;
