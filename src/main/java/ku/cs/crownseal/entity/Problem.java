@@ -17,7 +17,11 @@ public class Problem {
 
 
     private String nameMachine;
+
+    private String subject;
+
     private String detail;
+
     private LocalDateTime timestamp;
     private String location;
     private String status;
