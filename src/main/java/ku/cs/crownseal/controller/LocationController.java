@@ -27,4 +27,9 @@ public class LocationController {
         locationService.createLocation(locationRequest, authentication.getName());
         return "home";
     }
+    @GetMapping("/locations")
+    public String getLocationViewPage() {
+        return "location-add"; // return หน้าฟอร์ม signup.html
+    }
+
 }
