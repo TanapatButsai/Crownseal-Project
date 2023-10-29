@@ -21,14 +21,18 @@ public class Problem {
     private LocalDateTime timestamp;
     private String status;
 
+    private String locationName;
+    private String locationDetail;
+    private String district;
+    private String province;
+    private String postalCode;
+
     @ManyToOne
     @JoinColumn(name = "member_id") // "member_id" is the foreign key column in the PurchaseOrder table
     private Member member;
 
-    @OneToOne
-    @JoinColumn(name = "work_order_id")
+    @OneToOne(mappedBy = "problem")
     private WorkOrder workOrder;
 
-    @OneToOne
-    private Location location;
+
 }

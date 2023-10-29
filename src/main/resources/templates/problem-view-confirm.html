@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="UTF-8">
+  <title>Kafe Application</title>
+  <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+  <script>
+    function confirmAction(formId) {
+      if (window.confirm("Are you sure you want to confirm this action?")) {
+        document.getElementById(formId).submit();
+      }
+    }
+  </script>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="container w-50 p-3">
+  <h1 class="display-6">รายละเอียด</h1>
+
+  <table class="table table-bordered table-striped table-hover">
+    <thead class="thead-dark">
+    <tr style="text-align: center; vertical-align: top; " class="table-secondary">
+      <th>Machine Number</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="problem : ${problem}">
+      <td style="text-align: right" th:text="${problem.nameMachine}"></td>
+      <td style="text-align: right" th:text="${problem.detail}"></td>
+      <td style="text-align: right" th:text="${problem.getDistrict()}"></td>
+      <td style="text-align: right" th:text="${problem.id}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <div>
+    <button id="confirm-button" class="btn btn-primary" onclick="confirmAction('confirm-form')">start work</button>
+    <button id="finish-button" class="btn btn-primary red-button" onclick="confirmAction('finish-form')">Finish</button>
+    <form id="confirm-form" action="#" th:action="@{/admin/problems/{problemId}/in-progress(problemId=${problem.id})}" method="GET"
+          style="display: none;">
+    </form>
+    <form id="finish-form" action="#" th:action="@{/admin/problems/{problemId}/finish(problemId=${problem.id})}" method="POST"
+          style="display: none;">
+    </form>
+  </div>
+</div>
+</body>
+</html>

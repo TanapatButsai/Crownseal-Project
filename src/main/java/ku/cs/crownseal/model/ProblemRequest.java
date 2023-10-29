@@ -10,8 +10,14 @@ import java.time.LocalDateTime;
 public class ProblemRequest {
 
     private String nameMachine;
+    private String subject;
     private String detail;
     private LocalDateTime timestamp;
-    private String location;
     private String status;
+
+    private String locationName;
+    private String locationDetail;
+    private String district;
+    private String province;
+    private String postalCode;
 }

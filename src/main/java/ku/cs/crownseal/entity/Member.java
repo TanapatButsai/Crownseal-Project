@@ -27,6 +27,6 @@ public class Member {
     @OneToMany(mappedBy = "member") //
     private List<Problem> ProblemList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member")
-    private List<Location> locationList = new ArrayList<>();
+    @OneToMany(mappedBy = "member") // Defines the relationship
+    private List<WorkOrder> workOrderList =  new ArrayList<>();
 }

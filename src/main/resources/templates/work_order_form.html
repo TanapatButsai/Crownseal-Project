@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CrownSeal Application</title>
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+
+<div class="container w-50 p-3">
+    <h1 class="display-5" style="text-align: center;">Report Problem</h1>
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-dark">
+        <tr style="text-align: center; vertical-align: top; " class="table-secondary">
+            <th>ID</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="problem : ${problem}">
+            <td style="text-align: right" th:text="${problem.getId()}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+    <form action="#" th:action="@{/admin/problems/{problemId}/in-progress(problemId=${problem.getId()})}" method="POST">
+
+        <div class="mb-3">
+            <label for="inputWork_detail">Work_detail</label>
+            <input id="inputWork_detail" type="input" class="form-control"
+                   name="work_detail" style="width: 100%; height: 300px;">
+        </div>
+        <select class="form-control" id="member" name="member" required>
+            <option th:each="engineer : ${engineers}"
+                    th:value="${engineer.getId()}" th:text="${engineer.getName()}">
+            </option>
+        </select>
+        <button id="submit-button" type="submit" class="btn btn-primary">สร้างงาน</button>
+    </form>
+</div>
+
+</body>
+</html>
