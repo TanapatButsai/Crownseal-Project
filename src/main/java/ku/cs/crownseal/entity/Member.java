@@ -24,8 +24,9 @@ public class Member {
     private String email;
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "member") // "member" is the name of the field in the PurchaseOrder class
+    @OneToMany(mappedBy = "member") //
     private List<Problem> ProblemList = new ArrayList<>();
 
-
+    @OneToMany(mappedBy = "member") // Defines the relationship
+    private List<WorkOrder> workOrderList =  new ArrayList<>();
 }

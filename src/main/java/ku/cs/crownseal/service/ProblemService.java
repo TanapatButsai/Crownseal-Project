@@ -1,5 +1,6 @@
 package ku.cs.crownseal.service;
 import ku.cs.crownseal.entity.Problem;
+import ku.cs.crownseal.entity.WorkOrder;
 import ku.cs.crownseal.model.ProblemRequest;
 import ku.cs.crownseal.repository.CustomerRepository;
 import ku.cs.crownseal.repository.ProblemRepository;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -26,10 +28,19 @@ public class ProblemService {
 
 
     public List<Problem> getAllProblem() {
+
         return problemRepository.findAll();
     }
+    public List<Problem> getAllProblemByStatus(String status) {
+
+        return problemRepository.findProblemsByStatus(status);
+    }
+    public Problem getByID(UUID problemId){ return problemRepository.findById(problemId).get();}
 
 
+    public List<Problem> getMemberProblem(String name) {
+        return customerRepository.findByUsername(name).getProblemList();
+    }
     public void createProblem(ProblemRequest request,String name) {
         Problem record = modelMapper.map(request, Problem.class);
         record.setMember(customerRepository.findByUsername(name));
@@ -37,4 +48,32 @@ public class ProblemService {
         record.setStatus("ยังไม่ดำเนินการ");
         problemRepository.save(record);
     }
+    public void setProblemWorkOrder(WorkOrder workOrder, UUID uuid){
+        Problem record = problemRepository.findById(uuid).get();
+        record.setWorkOrder(workOrder);
+        problemRepository.save(record);
+    }
+    public void confirmProblem(UUID problemId){
+        Problem record = problemRepository.findById(problemId).get();
+        record.setStatus("รับเรื่อง");
+        problemRepository.save(record);
+    }
+
+    public void denyProblem(UUID problemId){
+        Problem record = problemRepository.findById(problemId).get();
+        record.setStatus("ไม่รับเรื่อง");
+        problemRepository.save(record);
+    }
+
+    public void finishProblem(UUID problemId){
+        Problem record = problemRepository.findById(problemId).get();
+        record.setStatus("แก้ไขแล้ว");
+        problemRepository.save(record);
+    }
+    public void inProgressProblem(UUID problemId){
+        Problem record = problemRepository.findById(problemId).get();
+        record.setStatus("กำลังดำเนินการ");
+        problemRepository.save(record);
+    }
+
 }

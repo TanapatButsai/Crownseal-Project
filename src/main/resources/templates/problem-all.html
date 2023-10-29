@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
   <meta charset="UTF-8">
   <title>Crownseal Application</title>
-  <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-  <script th:src="@{/js/bootstrap.min.js}"></script>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div th:insert="~{fragments/header :: header}"></div>
 
-
+<div th:insert="~{fragments/header-2 :: header}"></div>
 <div class="container w-50 p-3">
-  <h1 style="text-align: center; margin-bottom: 25px" class="display-6">Problem Reported</h1>
+
+
+
+  <h1 style="text-align: center; margin-bottom: 25px" class="display-6"><span th:text="${type}"></span></h1>
+
+
 
   <table class="table table-bordered table-striped table-hover">
     <thead class="thead-dark">
@@ -21,15 +26,21 @@
       <th>สถานที่ที่เครื่องจักรชำรุด</th>
       <th>สถานะ</th>
       <th>ระยะเวลาที่รายงานปัญหา</th>
+      <th>Action</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="problem : ${problems}">
       <td th:text="${problem.nameMachine}"></td>
       <td th:text="${problem.detail}"></td>
-      <td th:text="${problem.location}"></td>
+      <td th:text="${problem.locationName}"></td>
       <td th:text="${problem.getStatus()}"></td>
       <td th:text="${#temporals.format(problem.timestamp, 'dd/MM/yyyy HH:mm')}"></td>
+
+      <td style="text-align: center">
+        <a class="btn btn-primary" th:href="@{/admin/problems/{id}(id=${problem.id})}">View</a>
+      </td>
+
     </tr>
     </tbody>
   </table>

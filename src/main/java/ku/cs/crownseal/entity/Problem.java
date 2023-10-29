@@ -15,20 +15,24 @@ public class Problem {
     @GeneratedValue
     private UUID id;
 
-
     private String nameMachine;
+    private String subject;
     private String detail;
     private LocalDateTime timestamp;
-    private String location;
     private String status;
 
-
+    private String locationName;
+    private String locationDetail;
+    private String district;
+    private String province;
+    private String postalCode;
 
     @ManyToOne
     @JoinColumn(name = "member_id") // "member_id" is the foreign key column in the PurchaseOrder table
     private Member member;
 
-    @OneToOne
-    @JoinColumn(name = "work_order_id")
+    @OneToOne(mappedBy = "problem")
     private WorkOrder workOrder;
+
+
 }

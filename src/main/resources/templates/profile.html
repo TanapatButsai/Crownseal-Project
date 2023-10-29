@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>CrownSeal Application</title>
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+
+<div class="container w-50 p-3">
+    <h1 class="display-5" style="text-align: center;">ข้อมูลส่วนตัว</h1>
+    <p><span th:text="${greeting}"></span></p>
+    <div class="display-6" style="text-align: -moz-right;">ชื่อ   <p><span th:text="${greeting}"></span></p><span sec:authentication="name"></span></div>
+    <div class="display-6" style="text-align: -moz-right;">ชื่อ   <span sec:authentication="name"></span></div>
+    <div class="display-6" style="text-align: -moz-right;">ชื่อ   <span sec:authentication="name"></span></div>
+
+</div>
+
+</body>
+</html>

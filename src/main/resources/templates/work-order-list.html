@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Crownseal Application</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div th:insert="~{fragments/header-2 :: header}"></div>
+<div class="container w-50 p-3">
+
+
+
+    <h1 style="text-align: center; margin-bottom: 25px" class="display-6"><span th:text="${type}"></span></h1>
+
+
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-dark">
+        <tr style="text-align: center; vertical-align: top; " class="table-secondary">
+            <th>วิศวะกรผู้รับผิดชอบ</th>
+            <th>เวลาที่มอบหมาย</th>
+            <th>รายละเอียดงาน</th>
+            <th>ปัญหา</th>
+
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${orders ne null}" th:each="order : ${orders}">
+            <td th:text="${order.getMember().getName()}"></td>
+            <td th:text="${order.getTime_stamp_start()}"></td>
+            <td th:text="${order.getProblem().getSubject()}"></td>
+            <td th:text="${order.getProblem().getLocationName().toString()}"></td>
+            <td style="text-align: center">
+                <a class="btn btn-primary" th:href="@{/work/my/{workOrderId}(workOrderId=${order.id})}">View</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
