@@ -5,6 +5,11 @@
     <title>CrownSeal Application</title>
     <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script>
+        function confirmSubmission() {
+            return confirm("Are you sure you want to submit the form?");
+        }
+    </script>
 </head>
 <body>
 <div th:insert="~{fragments/header :: header}"></div>
@@ -13,22 +18,22 @@
 <div class="container w-50 p-3">
     <h1 class="display-5" style="text-align: center;">Report Problem</h1>
 
-    <form action="#" th:action="@{/problems/add}" method="POST">
+    <form action="#" th:action="@{/problems/add}" method="POST" onsubmit="return confirmSubmission();">
         <div class="mb-3">
             <label for="inputName">รหัสของเครื่องจักร</label>
             <input id="inputName" type="input" class="form-control"
-                   name="nameMachine">
+                   name="nameMachine" required>
         </div>
         <div class="mb-3">
             <label for="inputPrice">ระบุปัญหาของเครื่องจักร</label>
             <input id="inputSubject" type="input" class="form-control"
-                   name="subject">
+                   name="subject" required>
         </div>
 
         <div class="mb-3">
             <label for="inputPrice">รายละเอียด</label>
-            <input id="inputPrice" type="input" class="form-control"
-                   name="detail">
+            <textarea id="inputPrice" class="form-control"
+                      name="detail" required rows="5" cols="50"></textarea>
         </div>
 
             <label >แจ้งสถานที่ที่ชำรุด----------</label>
@@ -36,37 +41,37 @@
         <div class="mb-3">
             <label for="inputlocationName">ชื่อของที่อยู่</label>
             <input id="inputlocationName" type="input" class="form-control"
-                   name="locationName">
+                   name="locationName" required>
         </div>
 
         <div class="mb-3">
             <label for="inputlocationDetail">รายละเอียดที่อยู่</label>
             <input id="inputlocationDetail" type="input" class="form-control"
-                   name="locationDetail">
+                   name="locationDetail" required>
         </div>
 
         <div class="mb-3">
             <label for="inputsubDistrict">แขวง</label>
             <input id="inputsubDistrict" type="input" class="form-control"
-                   name="subDistrict">
+                   name="subDistrict" required>
         </div>
 
         <div class="mb-3">
             <label for="inputdistrict">แขต</label>
             <input id="inputdistrict" type="input" class="form-control"
-                   name="district">
+                   name="district" required>
         </div>
 
         <div class="mb-3">
             <label for="inputprovince">จังหวัด</label>
             <input id="inputprovince" type="input" class="form-control"
-                   name="province">
+                   name="province" required>
         </div>
 
         <div class="mb-3">
             <label for="inputpostalCode">ไปรษณีย์</label>
-            <input id="inputpostalCode" type="input" class="form-control"
-                   name="postalCode">
+            <input id="inputpostalCode" type="input" class="form-control "
+                   name="postalCode" required>
         </div>
         <button id="submit-button" type="submit" class="btn btn-primary">รายงานปัญหา</button>
     </form>

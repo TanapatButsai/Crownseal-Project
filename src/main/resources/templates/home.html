@@ -6,10 +6,39 @@
     <title>Crownseal Application</title>
     <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <script th:src="@{/js/bootstrap.min.js}"></script>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/templates/style.css">
+    <style>
+        /* Your CSS code goes here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .banner {
+            text-align: center;
+        }
+
+        .banner-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-width: 100%;
+        }
+        .container {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 <div th:insert="~{fragments/header :: header}"></div>
+
+<div class="banner">
+    <div class="banner-title">
+    </div>
+    <div class="banner-image">
+        <img src="https://crownseal.co.th/wp-content/themes/crownseal/img/banner.jpg" alt="Banner Image" class="full-width-image">
+    </div>
+</div>
 <div class="container">
 
     <h1 class="display-6">เว็ปไซด์ทดลองระบบรายงานปัญหาสำหรับลูกค้าโรงงานฝาจีบ</h1>
@@ -18,7 +47,7 @@
 
     <div sec:authorize="isAuthenticated()">
         <p>คุณ <b><span sec:authentication="name"></span></b></p>
-        <a class="btn btn-primary" th:href="@{/logout}">Logout</a>
+        <a class="btn btn-primary" href="https://crownseal.co.th/about-csc">CROWN SEAL PUBLIC COMPANY LIMITED</a>
     </div>
     <div sec:authorize="isAnonymous()">
         <a class="btn btn-primary" th:href="@{/login}">Login</a>

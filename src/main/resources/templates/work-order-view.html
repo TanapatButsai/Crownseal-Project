@@ -23,36 +23,35 @@
     </thead>
     <tbody>
     <tr th:each="order : ${order}">
-      <td style="text-align: center" th:text="${order.getWork_detail()}"></td>
-      <td style="text-align: center" th:text="${order.getProblem().nameMachine}"></td>
-<!--      <td style="text-align: right" th:text="${problem.detail}"></td>-->
-<!--      <td style="text-align: right" th:text="${problem.getDistrict()}"></td>-->
-<!--      <td style="text-align: right" th:text="${problem.id}"></td>-->
+      <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${order.getWork_detail()}"></td>
+      <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${order.getProblem().nameMachine}"></td>
     </tr>
     </tbody>
   </table>
-  <div>
-<!--    <form action="#" th:action="@{/admin/problems/{problemId}/confirm(problemId=${problem.id})}" method="POST">-->
-<!--      <button id="submit-button" type="button" class="btn btn-primary" onclick="showConfirmDialog('Confirm')">Confirm</button>-->
-<!--    </form>-->
-<!--    <form action="#" th:action="@{/admin/problems/{problemId}/deny(problemId=${problem.id})}" method="POST">-->
-<!--      <button id="submit-button-2" type="button" class="btn btn-primary red-button" onclick="showConfirmDialog('Deny')">Deny</button>-->
-<!--    </form>-->
+
+      <div class="container w-50 p-3">
+        <h1 class="display-5" style="text-align: center;">Report Problem</h1>
+
+        <form action="#" th:action="@{/work/{problemId}/finish(problemId=${order.getProblem().id})}" method="POST" enctype="multipart/form-data">
+          <input type="file" name="pdfFile" accept=".pdf"> <!-- File upload input -->
+          <input type="submit" value="Upload PDF">
+          <button id="submit-button" type="submit" class="btn btn-primary">finish</button>
+        </form>
   </div>
 </div>
 
-<script>
-  function showConfirmDialog(action) {
-    if (confirm('Are you sure you want to ' + action + ' this item?')) {
-      // If the user confirms, submit the form
-      if (action === 'Confirm') {
-        document.getElementById('submit-button').closest('form').submit();
-      } else if (action === 'Deny') {
-        document.getElementById('submit-button-2').closest('form').submit();
-      }
-    }
-  }
-</script>
+<!--<script>-->
+<!--  function showConfirmDialog(action) {-->
+<!--    if (confirm('Are you sure you want to ' + action + ' this item?')) {-->
+<!--      // If the user confirms, submit the form-->
+<!--      if (action === 'Confirm') {-->
+<!--        document.getElementById('submit-button').closest('form').submit();-->
+<!--      } else if (action === 'Deny') {-->
+<!--        document.getElementById('submit-button-2').closest('form').submit();-->
+<!--      }-->
+<!--    }-->
+<!--  }-->
+<!--</script>-->
 
 </body>
 </html>

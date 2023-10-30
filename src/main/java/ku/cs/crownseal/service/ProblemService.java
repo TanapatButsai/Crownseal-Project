@@ -4,6 +4,7 @@ import ku.cs.crownseal.entity.WorkOrder;
 import ku.cs.crownseal.model.ProblemRequest;
 import ku.cs.crownseal.repository.CustomerRepository;
 import ku.cs.crownseal.repository.ProblemRepository;
+import ku.cs.crownseal.repository.WorkOrderRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,8 @@ public class ProblemService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private WorkOrderRepository workOrderRepository;
 
     public List<Problem> getAllProblem() {
 
@@ -48,9 +51,9 @@ public class ProblemService {
         record.setStatus("ยังไม่ดำเนินการ");
         problemRepository.save(record);
     }
-    public void setProblemWorkOrder(WorkOrder workOrder, UUID uuid){
+    public void setProblemWorkOrder(UUID workOrderId, UUID uuid){
         Problem record = problemRepository.findById(uuid).get();
-        record.setWorkOrder(workOrder);
+        record.setWorkOrder(workOrderRepository.findById(workOrderId).get());
         problemRepository.save(record);
     }
     public void confirmProblem(UUID problemId){
@@ -68,6 +71,12 @@ public class ProblemService {
     public void finishProblem(UUID problemId){
         Problem record = problemRepository.findById(problemId).get();
         record.setStatus("แก้ไขแล้ว");
+        problemRepository.save(record);
+    }
+
+    public void processedProblem(UUID problemId){
+        Problem record = problemRepository.findById(problemId).get();
+        record.setStatus("ดำเนินการแล้ว");
         problemRepository.save(record);
     }
     public void inProgressProblem(UUID problemId){

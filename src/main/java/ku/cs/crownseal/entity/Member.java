@@ -29,4 +29,6 @@ public class Member {
 
     @OneToMany(mappedBy = "member") // Defines the relationship
     private List<WorkOrder> workOrderList =  new ArrayList<>();
+
+
 }

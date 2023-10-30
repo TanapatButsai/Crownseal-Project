@@ -1,17 +1,18 @@
 package ku.cs.crownseal.controller;
 
+import ku.cs.crownseal.entity.WorkOrder;
 import ku.cs.crownseal.repository.CustomerRepository;
 import ku.cs.crownseal.repository.WorkOrderRepository;
+import ku.cs.crownseal.service.ProblemService;
 import ku.cs.crownseal.service.WorkOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.UUID;
 
 @Controller
@@ -24,6 +25,10 @@ public class EngineerController {
     WorkOrderService workOrderService;
     @Autowired
     WorkOrderRepository workOrderRepository;
+    @Autowired
+    ProblemService problemService;
+
+
     @GetMapping("/admin/engineer")
     public String getEngineerListPage(Model model){
 
@@ -43,6 +48,13 @@ public class EngineerController {
     public String getWorkOrderView(@PathVariable UUID workOrderId,Model model){
         model.addAttribute("order", workOrderService.getWorkOrderById(workOrderId));
         return "work-order-view";
+    }
+    @PostMapping("/work/{problemId}/finish")
+    public String finishProblem(@PathVariable UUID problemId , @RequestParam("pdfFile") MultipartFile file, Model model)
+    {
+        problemService.processedProblem(problemId);
+        // Add logic to associate the uploaded file with the WorkOrder
+        return "home";
     }
 
 }

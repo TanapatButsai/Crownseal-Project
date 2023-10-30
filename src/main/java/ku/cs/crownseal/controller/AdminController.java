@@ -49,7 +49,22 @@ public class AdminController {
         model.addAttribute("problems", problemService.getAllProblemByStatus("กำลังดำเนินการ"));
         model.addAttribute("type","อยู่ระหว่างการจัดการโดยหัวหน้าวิศวะกร");
 
-        return "problem-all";
+        return "problem-in-progress";
+    }
+
+    @GetMapping("/processed")
+    public String getAllProblemAlreadyProcessed(Model model) {
+        model.addAttribute("problems", problemService.getAllProblemByStatus("ดำเนินการแล้ว"));
+        model.addAttribute("type","เสร็จสิ้้นจัดการโดยหัวหน้าวิศวะกร");
+
+        return "problem-in-progress";
+    }
+    @GetMapping("/done")
+    public String getAllProblemFinish(Model model) {
+        model.addAttribute("problems", problemService.getAllProblemByStatus("แก้ไขแล้ว"));
+        model.addAttribute("type","แก้ไขแล้ว");
+
+        return "problem-in-progress";
     }
     @GetMapping("/{id}")
     public String getProblems(@PathVariable UUID id, Model model) {
@@ -58,10 +73,15 @@ public class AdminController {
             return "problem-view-new";
         }else if (problemService.getByID(id).getStatus().equals("รับเรื่อง")){
             return "problem-view-confirm";
+        } else if (problemService.getByID(id).getStatus().equals("ไม่รับเรื่อง")
+                || problemService.getByID(id).getStatus().equals("แก้ไขแล้ว")
+                || problemService.getByID(id).getStatus().equals("กำลังดำเนินการ") ){
+            return "problem-view";
+        } else if (problemService.getByID(id).getStatus().equals("ดำเนินการแล้ว") ){
+            return "problem-view-done";
         }
         return "home";
     }
-
     @PostMapping("/{problemId}/confirm")
     public String confirmProblem(@PathVariable UUID problemId , Model model)
     {
@@ -94,7 +114,7 @@ public class AdminController {
     public String createWorkOrder(@PathVariable UUID problemId, @ModelAttribute WorkOrderRequest workOrderRequest , Model model) {
         System.out.println(problemId.toString());
         problemService.inProgressProblem(problemId);
-        workOrderService.createWorkOrder(workOrderRequest,problemId);
+        problemService.setProblemWorkOrder(workOrderService.createWorkOrder(workOrderRequest,problemId).getId(),problemId);
 
         return "home";
     }

@@ -32,10 +32,10 @@
     </thead>
     <tbody>
     <tr th:each="problem : ${problem}">
-      <td style="text-align: right" th:text="${problem.nameMachine}"></td>
-      <td style="text-align: right" th:text="${problem.detail}"></td>
-      <td style="text-align: right" th:text="${problem.getDistrict()}"></td>
-      <td style="text-align: right" th:text="${problem.id}"></td>
+      <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.nameMachine}"></td>
+      <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.detail}"></td>
+      <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.getDistrict()}"></td>
+      <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.id}"></td>
     </tr>
     </tbody>
   </table>

@@ -30,4 +30,8 @@ public class WorkOrder {
     @ManyToOne
     @JoinColumn(name = "member_id") // Specifies the foreign key column
     private Member member;
+
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    private byte[] pdfFileFinish; // Byte array to store the PDF file
 }

@@ -31,8 +31,8 @@
 
         <div class="mb-3">
             <label for="inputWork_detail">Work_detail</label>
-            <input id="inputWork_detail" type="input" class="form-control"
-                   name="work_detail" style="width: 100%; height: 300px;">
+            <textarea id="inputWork_detail" type="input" class="form-control"
+                      name="work_detail" style="width: 100%; height: 300px;"></textarea>
         </div>
         <select class="form-control" id="member" name="member" required>
             <option th:each="engineer : ${engineers}"

@@ -31,11 +31,11 @@
         </thead>
         <tbody>
         <tr th:if="${orders ne null}" th:each="order : ${orders}">
-            <td th:text="${order.getMember().getName()}"></td>
-            <td th:text="${order.getTime_stamp_start()}"></td>
-            <td th:text="${order.getProblem().getSubject()}"></td>
-            <td th:text="${order.getProblem().getLocationName().toString()}"></td>
-            <td style="text-align: center">
+            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${order.getMember().getName()}"></td>
+            <td  style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${order.getTime_stamp_start()}"></td>
+            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${order.getProblem().getSubject()}"></td>
+            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${order.getProblem().getLocationName().toString()}"></td>
+            <td  style="text-align: center">
                 <a class="btn btn-primary" th:href="@{/work/my/{workOrderId}(workOrderId=${order.id})}">View</a>
             </td>
         </tr>

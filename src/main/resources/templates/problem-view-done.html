@@ -7,6 +7,13 @@
     <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script>
+        function confirmAction(formId) {
+            if (window.confirm("Are you sure you want to confirm this action?")) {
+                document.getElementById(formId).submit();
+            }
+        }
+    </script>
 </head>
 <body>
 <div th:insert="~{fragments/header :: header}"></div>
@@ -33,32 +40,11 @@
         </tbody>
     </table>
     <div>
-        <form action="#" th:action="@{/admin/problems/{problemId}/confirm(problemId=${problem.id})}" method="POST">
-            <button id="submit-button" type="button" class="btn btn-primary" onclick="showConfirmDialog('Confirm')">Confirm</button>
-        </form>
-        <form action="#" th:action="@{/admin/problems/{problemId}/deny(problemId=${problem.id})}" method="POST">
-            <button id="submit-button-2" type="button" class="btn btn-primary red-button" onclick="showConfirmDialog('Deny')">Deny</button>
+        <button id="finish-button" class="btn btn-primary red-button" onclick="confirmAction('finish-form')">Finish work</button>
+        <form id="finish-form" action="#" th:action="@{/admin/problems/{problemId}/finish(problemId=${problem.id})}" method="POST"
+              style="display: none;">
         </form>
     </div>
 </div>
-
-<script>
-    function showConfirmDialog(action) {
-        if (confirm('Are you sure you want to ' + action + ' this item?')) {
-            // If the user confirms, submit the form
-            if (action === 'Confirm') {
-                document.getElementById('submit-button').closest('form').submit();
-            } else if (action === 'Deny') {
-                document.getElementById('submit-button-2').closest('form').submit();
-            }
-        }
-    }
-</script>
-
 </body>
 </html>
-
-
-
-
-

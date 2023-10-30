@@ -11,6 +11,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -31,12 +32,12 @@ public class WorkOrderService {
     private ModelMapper modelMapper;
     @Autowired
     private ProblemService problemService;
-    public void createWorkOrder(WorkOrderRequest request, UUID id) {
+    public WorkOrder createWorkOrder(WorkOrderRequest request, UUID id) {
         WorkOrder record = modelMapper.map(request, WorkOrder.class);
         record.setTime_stamp_start(LocalDateTime.now());
         record.setProblem(problemRepository.findById(id).get());
-//        problemService.setProblemWorkOrder(record,id);
         workOrderRepository.save(record);
+        return record;
     }
 
     public List<WorkOrder> getWorkOrderListByMember(String username){
@@ -45,6 +46,5 @@ public class WorkOrderService {
     public WorkOrder getWorkOrderById(UUID id){
 
         return workOrderRepository.findById(id).get();
-
     }
 }
