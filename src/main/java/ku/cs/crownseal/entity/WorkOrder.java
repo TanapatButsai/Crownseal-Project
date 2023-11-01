@@ -32,6 +32,8 @@ public class WorkOrder {
     private Member member;
 
     @Lob
-    @Basic(fetch = FetchType.LAZY)
-    private byte[] pdfFileFinish; // Byte array to store the PDF file
+    private byte[] pdfFileWorkOrderDetail;
+
+    @Lob
+    private byte[] pdfFileRepairedReport;
 }
