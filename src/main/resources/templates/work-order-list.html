@@ -23,7 +23,6 @@
         <tr style="text-align: center; vertical-align: top; " class="table-secondary">
             <th>วิศวะกรผู้รับผิดชอบ</th>
             <th>เวลาที่มอบหมาย</th>
-            <th>รายละเอียดงาน</th>
             <th>ปัญหา</th>
 
             <th>Action</th>
@@ -34,7 +33,6 @@
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${order.getMember().getName()}"></td>
             <td  style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${order.getTime_stamp_start()}"></td>
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${order.getProblem().getSubject()}"></td>
-            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${order.getProblem().getLocationName().toString()}"></td>
             <td  style="text-align: center">
                 <a class="btn btn-primary" th:href="@{/work/my/{workOrderId}(workOrderId=${order.id})}">View</a>
             </td>

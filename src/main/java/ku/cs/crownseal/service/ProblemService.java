@@ -1,6 +1,5 @@
 package ku.cs.crownseal.service;
 import ku.cs.crownseal.entity.Problem;
-import ku.cs.crownseal.entity.WorkOrder;
 import ku.cs.crownseal.model.ProblemRequest;
 import ku.cs.crownseal.repository.CustomerRepository;
 import ku.cs.crownseal.repository.ProblemRepository;
@@ -47,7 +46,7 @@ public class ProblemService {
     public void createProblem(ProblemRequest request,String name) {
         Problem record = modelMapper.map(request, Problem.class);
         record.setMember(customerRepository.findByUsername(name));
-        record.setTimestamp(LocalDateTime.now());
+        record.setTimeStampStart(LocalDateTime.now());
         record.setStatus("ยังไม่ดำเนินการ");
         problemRepository.save(record);
     }
@@ -71,11 +70,13 @@ public class ProblemService {
     public void finishProblem(UUID problemId){
         Problem record = problemRepository.findById(problemId).get();
         record.setStatus("แก้ไขแล้ว");
+        record.setTimeStampFinish(LocalDateTime.now());
         problemRepository.save(record);
     }
 
-    public void processedProblem(UUID problemId){
-        Problem record = problemRepository.findById(problemId).get();
+    public void processedProblemByWorkOrder(UUID workOrderId){
+
+        Problem record = problemRepository.findById(workOrderId).get();
         record.setStatus("ดำเนินการแล้ว");
         problemRepository.save(record);
     }

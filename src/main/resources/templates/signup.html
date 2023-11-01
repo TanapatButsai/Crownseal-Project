@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
   <meta charset="UTF-8">
   <title>Crownseal Application</title>
@@ -8,13 +9,14 @@
 </head>
 <body>
   <div th:insert="~{fragments/header :: header}"></div>
+
 <div class="container w-50 p-3">
-  <h1 class="display-5">Sign Up</h1>
 
 
-  <form action="#" th:action="@{/signup}" method="POST">
+<!-------------------------------------------------------engineer-->
 
-
+  <form action="#" sec:authorize="isAuthenticated() and hasRole('ROLE_MANAGER')" th:action="@{/signup/engineer}" method="POST">
+    <h1 class="display-5">สมัครสำหรับวิศวะกร</h1>
     <div id="success-msg" class="alert alert-success"
          th:if="${signupSuccess}">
       Successfully signed up! Please <a th:href="@{/login}">login</a>.
@@ -50,10 +52,51 @@
       <input id="inputPhone" type="input" class="form-control"
              name="phoneNumber" required>
     </div>
-    <button id="submit-button" type="submit" class="btn btn-primary">Sign Up</button>
+    <button id="submit-button" type="submit" class="btn btn-primary">Sign Up For Engineer</button>
   </form>
 </div>
+  <!-------------------------------------------------------user-->
+  <div class="container w-50 p-3" sec:authorize="isAnonymous()">
+    <h1 class="display-5">สมัครสมาชิกสำหรับลูกค้า</h1>
+    <form action="#"  th:action="@{/signup}" method="POST">
+      <div id="success-msg-2" class="alert alert-success"
+           th:if="${signupSuccess}">
+        Successfully signed up! Please <a th:href="@{/login}">login</a>.
+      </div>
+      <div id="error-msg-2" class="alert alert-danger"
+           th:if="${signupError}">
+        <span th:text="${signupError}"></span>
+      </div>
 
+
+      <div class="mb-3">
+        <label for="inputName-2">Name</label>
+        <input id="inputName-2" type="input" class="form-control"
+               name="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="inputUsername-2">Username</label>
+        <input id="inputUsername-2" type="input" class="form-control"
+               name="username" required>
+      </div>
+      <div class="mb-3">
+        <label for="inputPassword-2">Password</label>
+        <input id="inputPassword-2" type="password" class="form-control"
+               name="password" required>
+      </div>
+      <div class="mb-3">
+        <label for="inputPassword-2">Email</label>
+        <input id="inputEmail-2" type="email" class="form-control"
+               name="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="inputPassword-2">Phone-number</label>
+        <input id="inputPhone-2" type="input" class="form-control"
+               name="phoneNumber" required>
+      </div>
+      <button id="submit-button-2" type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+  </div>
 
 </body>
 </html>

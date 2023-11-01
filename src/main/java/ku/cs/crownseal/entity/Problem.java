@@ -18,7 +18,8 @@ public class Problem {
     private String nameMachine;
     private String subject;
     private String detail;
-    private LocalDateTime timestamp;
+    private LocalDateTime timeStampStart;
+    private LocalDateTime timeStampFinish;
     private String status;
 
     private String locationName;

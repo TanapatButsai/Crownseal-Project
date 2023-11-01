@@ -39,6 +39,12 @@
                     th:value="${engineer.getId()}" th:text="${engineer.getName()}">
             </option>
         </select>
+
+        <div class="mb-3">
+            <label for="inputWorkOrderDetailUrl">ลิ้งใบสั่งงาน (ถ้าเป็นGOOGLE DRIVE กรุณาปรับให้เป็น Public)</label>
+            <textarea id="inputWorkOrderDetailUrl" type="input" class="form-control"
+                      name="workOrderDetailUrl" style="width: 100%; height: 50px;" required></textarea>
+        </div>
         <button id="submit-button" type="submit" class="btn btn-primary">สร้างงาน</button>
     </form>
 </div>

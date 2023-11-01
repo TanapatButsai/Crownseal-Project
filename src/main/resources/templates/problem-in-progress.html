@@ -34,7 +34,7 @@
             <td style="max-width: 200px; word-wrap: break-word;" th:text="${problem.nameMachine}"></td>
             <td style="max-width: 200px; word-wrap: break-word;" th:text="${problem.detail}"></td>
             <td style="max-width: 200px; word-wrap: break-word;" th:text="${problem.getStatus()}"></td>
-            <td style="max-width: 200px; word-wrap: break-word;" th:text="${#temporals.format(problem.timestamp, 'dd/MM/yyyy HH:mm')}"></td>
+            <td style="max-width: 200px; word-wrap: break-word;" th:text="${#temporals.format(problem.getTimeStampStart, 'dd/MM/yyyy HH:mm')}"></td>
             <td style="max-width: 200px; word-wrap: break-word;" th:text="${problem.getWorkOrder() != null} ? ${problem.getWorkOrder().getMember().getName()} : '-'"</td>
 
 

@@ -11,5 +11,6 @@ import java.util.UUID;
 @Repository
 public interface WorkOrderRepository extends JpaRepository<WorkOrder, UUID> {
 
-        List<WorkOrder> findByMember(Member member);
+        List<WorkOrder> findAllByMemberUsernameAndProblemStatus(String username,String string);
+
 }

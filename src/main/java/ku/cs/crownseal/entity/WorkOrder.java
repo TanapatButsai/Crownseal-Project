@@ -22,18 +22,11 @@ public class WorkOrder {
     private String work_detail;
     private LocalDateTime time_stamp_finished;
     private LocalDateTime time_stamp_start;
-
-
-    @OneToMany(mappedBy = "workOrder", cascade = CascadeType.ALL)
-    private List<WorkOrderDetail> workOrderDetails;
+    private String workOrderDetailUrl;
+    private String repairingReportUrl;
 
     @ManyToOne
     @JoinColumn(name = "member_id") // Specifies the foreign key column
     private Member member;
 
-    @Lob
-    private byte[] pdfFileWorkOrderDetail;
-
-    @Lob
-    private byte[] pdfFileRepairedReport;
 }

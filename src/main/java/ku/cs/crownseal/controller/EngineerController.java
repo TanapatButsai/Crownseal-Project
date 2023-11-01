@@ -49,10 +49,13 @@ public class EngineerController {
         model.addAttribute("order", workOrderService.getWorkOrderById(workOrderId));
         return "work-order-view";
     }
-    @PostMapping("/work/{problemId}/finish")
-    public String finishProblem(@PathVariable UUID problemId , @RequestParam("pdfFile") MultipartFile file, Model model)
+    @PostMapping("/work/{workOrderId}/{problemID}/finish")
+    public String finishProblem(@PathVariable UUID workOrderId
+            ,@PathVariable UUID problemID
+            ,@RequestParam("repairingReportUrl") String repairingReportUrl, Model model)
     {
-        problemService.processedProblem(problemId);
+        problemService.processedProblemByWorkOrder(problemID);
+        workOrderService.setWorkOrderUrlByProblemId(workOrderId,repairingReportUrl);
         // Add logic to associate the uploaded file with the WorkOrder
         return "home";
     }

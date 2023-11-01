@@ -17,27 +17,28 @@
     <table class="table table-bordered table-striped table-hover">
         <thead class="thead-dark">
         <tr style="text-align: center; vertical-align: top; " class="table-secondary">
-            <th>Machine Number</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
+            <th>รหัสเครื่องจักร</th>
+            <th>แจ้งรายละเอียด</th>
+            <th>สถานะ</th>
+            <th>ระยะเวลาที่รายงานปัญหา</th>
+
         </tr>
         </thead>
         <tbody>
         <tr th:each="problem : ${problem}">
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.nameMachine}"></td>
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.detail}"></td>
-            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.getDistrict()}"></td>
-            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.id}"></td>
+            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.status}"></td>
+            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.timeStampStart}"></td>
         </tr>
         </tbody>
     </table>
-    <div>
+    <div sec:authorize="isAuthenticated() and hasRole('ROLE_MANAGER')">
         <form action="#" th:action="@{/admin/problems/{problemId}/confirm(problemId=${problem.id})}" method="POST">
             <button id="submit-button" type="button" class="btn btn-primary" onclick="showConfirmDialog('Confirm')">Confirm</button>
         </form>
-        <form action="#" th:action="@{/admin/problems/{problemId}/deny(problemId=${problem.id})}" method="POST">
-            <button id="submit-button-2" type="button" class="btn btn-primary red-button" onclick="showConfirmDialog('Deny')">Deny</button>
+        <form action="#"  th:action="@{/admin/problems/{problemId}/deny(problemId=${problem.id})}" method="POST">
+            <button STYLE="background-color: darkred" id="submit-button-2" type="button" class="btn btn-primary red-button" onclick="showConfirmDialog('Deny')">Deny</button>
         </form>
     </div>
 </div>

@@ -39,7 +39,7 @@
           <a class="nav-link" th:href="@{/admin/problems/all}">จัดการรายงานปัญหา</a>
         </li>
         <li class="nav-item" sec:authorize="isAuthenticated() and hasRole('ROLE_MANAGER')">
-          <a class="nav-link" th:href="@{/admin/engineer}">จัดการรายชื่อหัวหน้าวิศวะกรในระบบ</a>
+          <a class="nav-link" th:href="@{/admin/engineer}">รายชื่อหัวหน้าวิศวะกรในระบบ</a>
         </li>
         <!--    ส่วนของวิศวะกร    ---------------------------->
         <li class="nav-item" sec:authorize="isAuthenticated() and hasRole('ROLE_ENGINEER')">

@@ -24,23 +24,31 @@
     <table class="table table-bordered table-striped table-hover">
         <thead class="thead-dark">
         <tr style="text-align: center; vertical-align: top; " class="table-secondary">
-            <th>Machine Number</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
+            <th>รหัสเครื่องจักร</th>
+            <th>แจ้งรายละเอียด</th>
+            <th>สถานะ</th>
+            <th>ระยะเวลาที่รายงานปัญหา</th>
+            <th>หัวหน้าวิศวะกรผู้รับผิดชอบ</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="problem : ${problem}">
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.nameMachine}"></td>
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.detail}"></td>
-            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.getDistrict()}"></td>
-            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.id}"></td>
+            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.status}"></td>
+            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.timeStampStart}"></td>
+            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.getWorkOrder().getMember().getName()}"></td>
+            <td style="text-align: center">
+                <a th:href="${problem.getWorkOrder().getRepairingReportUrl()}" target="_blank">
+                    <button class="btn btn-primary">ดูรายงานซ่อมแซม</button>
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>
     <div>
-        <button id="finish-button" class="btn btn-primary red-button" onclick="confirmAction('finish-form')">Finish work</button>
+        <button id="finish-button" style="background-color: darkgreen" class="btn btn-primary red-button" onclick="confirmAction('finish-form')">ปิดงาน</button>
         <form id="finish-form" action="#" th:action="@{/admin/problems/{problemId}/finish(problemId=${problem.id})}" method="POST"
               style="display: none;">
         </form>

@@ -38,4 +38,19 @@ public class SignupController {
         return "signup";
     }
 
+    @PostMapping("/signup/engineer")
+    public String signupEngineer(@ModelAttribute SignupRequest customer, Model model) {
+
+
+        if (signupService.isUsernameAvailable(customer.getUsername())) {
+            signupService.createEngineer(customer);
+            model.addAttribute("signupSuccess", true);
+        } else {
+            model.addAttribute("signupError", "Username not available");
+        }
+        // return หน้าฟอร์ม signup.html เช่นกัน แต่จะมี message ปรากฎ
+        return "home";
+    }
+
+
 }

@@ -41,6 +41,19 @@ public class SignupService {
         repository.save(record);
     }
 
+    public void createEngineer(SignupRequest customer) {
+        Member record =  modelMapper.map(customer, Member.class);
+
+        record.setRole("ROLE_ENGINEER");
+
+
+        String hashedPassword = passwordEncoder.encode(customer.getPassword());
+        record.setPassword(hashedPassword);
+
+
+        repository.save(record);
+    }
+
 
     public Member getUser(String username) {
         return repository.findByUsername(username);

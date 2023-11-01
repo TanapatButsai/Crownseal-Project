@@ -9,4 +9,6 @@ public class WorkOrderRequest {
     private String work_detail;
 
     private Member member;
+
+    private String workOrderDetailUrl;
 }

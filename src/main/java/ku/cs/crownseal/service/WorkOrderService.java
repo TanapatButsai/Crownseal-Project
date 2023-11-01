@@ -41,10 +41,15 @@ public class WorkOrderService {
     }
 
     public List<WorkOrder> getWorkOrderListByMember(String username){
-        return customerRepository.findByUsername(username).getWorkOrderList();
+        return workOrderRepository.findAllByMemberUsernameAndProblemStatus(username,"กำลังดำเนินการ");
     }
     public WorkOrder getWorkOrderById(UUID id){
 
         return workOrderRepository.findById(id).get();
+    }
+    public void setWorkOrderUrlByProblemId(UUID uuid,String url){
+        WorkOrder workOrder = workOrderRepository.findById(uuid).get();
+        workOrder.setRepairingReportUrl(url);
+        workOrderRepository.save(workOrder);
     }
 }
