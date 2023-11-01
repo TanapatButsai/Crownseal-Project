@@ -3,9 +3,12 @@ package ku.cs.crownseal.controller;
 import ku.cs.crownseal.entity.WorkOrder;
 import ku.cs.crownseal.model.ProblemRequest;
 import ku.cs.crownseal.model.WorkOrderRequest;
+import ku.cs.crownseal.model.WorkReportUrlRequest;
 import ku.cs.crownseal.repository.CustomerRepository;
+import ku.cs.crownseal.repository.WorkReportUrlRepository;
 import ku.cs.crownseal.service.ProblemService;
 import ku.cs.crownseal.service.WorkOrderService;
+import ku.cs.crownseal.service.WorkReportUrlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +27,8 @@ public class AdminController {
 
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
+    private WorkReportUrlService workReportUrlService;
 
     @GetMapping("/all")
     public String getAllProblem(Model model) {
@@ -111,11 +116,14 @@ public class AdminController {
     }
 
     @PostMapping("/{problemId}/in-progress")
-    public String createWorkOrder(@PathVariable UUID problemId, @ModelAttribute WorkOrderRequest workOrderRequest , Model model) {
+    public String createWorkOrder(@PathVariable UUID problemId, @ModelAttribute WorkOrderRequest workOrderRequest ,
+                                  @ModelAttribute WorkReportUrlRequest workReportUrlRequest, Model model) {
         System.out.println(problemId.toString());
         problemService.inProgressProblem(problemId);
-        problemService.setProblemWorkOrder(workOrderService.createWorkOrder(workOrderRequest,problemId).getId(),problemId);
 
+        problemService.setProblemWorkOrder(
+                workOrderService.createWorkOrder(workOrderRequest,problemId, workReportUrlService.createWorkReportUrl(workReportUrlRequest))
+                        .getId(),problemId);
         return "home";
     }
 

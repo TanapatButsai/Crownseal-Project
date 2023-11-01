@@ -33,7 +33,7 @@
     <tbody>
     <tr th:each="order : ${order}">
       <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${order.getWork_detail()}"></td>
-      <td style="text-align: right; max-width: 200px; word-wrap: break-word; "  th:text="${order.getProblem().nameMachine}"></td>
+      <td style="text-align: right; max-width: 200px; word-wrap: break-word; "  th:text="${order.getProblem().getMachineNumber}"></td>
       <td style="text-align: right; max-width: 200px; word-wrap: break-word;">
         <span th:utext="${order.getProblem().getLocationName()}"></span><br>
         <span th:utext="${order.getProblem().getLocationDetail()}"></span><br>
@@ -44,7 +44,7 @@
       </td>
 
       <td style="text-align: center">
-        <a th:href="${order.getWorkOrderDetailUrl()}" target="_blank">
+        <a th:href="${order.getWorkReportUrl().getWorkOrderDetailUrl()}" target="_blank">
           <button class="btn btn-primary">View Work Order</button>
         </a>
       </td>
@@ -55,7 +55,7 @@
       <div class="container w-50 p-3">
         <h1 class="display-5" style="text-align: left;">ส่งรายงานซ่อมแซม</h1>
 
-        <form action="#" th:action="@{/work/{workOrderId}/{problemId}/finish(workOrderId=${order.getId()},problemId=${order.getProblem().getId()})}" method="POST" enctype="multipart/form-data">
+        <form action="#" th:action="@{/work/{workOrderId}/{problemId}/finish(workOrderId=${order.getId()},problemId=${order.getProblem().id})}" method="POST" enctype="multipart/form-data">
           <div class="mb-3">
             <label for="inputRepairingReportUrl">กรอกลิ้งรายงานการซ่อมแซม (กรุณาปรับให้เป็น Public)</label>
             <textarea id="inputRepairingReportUrl" type="input" class="form-control "

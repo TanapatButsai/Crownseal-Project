@@ -15,7 +15,7 @@ public class Problem {
     @GeneratedValue
     private UUID id;
 
-    private String nameMachine;
+    private String machineNumber;
     private String subject;
     private String detail;
     private LocalDateTime timeStampStart;

@@ -35,10 +35,11 @@
     </table>
     <div sec:authorize="isAuthenticated() and hasRole('ROLE_MANAGER')">
         <form action="#" th:action="@{/admin/problems/{problemId}/confirm(problemId=${problem.id})}" method="POST">
-            <button id="submit-button" type="button" class="btn btn-primary" onclick="showConfirmDialog('Confirm')">Confirm</button>
+            <button id="submit-button" type="button" class="btn btn-primary" onclick="showConfirmDialog('Confirm')">รับรายงานปัญหา</button>
         </form>
+        <br>
         <form action="#"  th:action="@{/admin/problems/{problemId}/deny(problemId=${problem.id})}" method="POST">
-            <button STYLE="background-color: darkred" id="submit-button-2" type="button" class="btn btn-primary red-button" onclick="showConfirmDialog('Deny')">Deny</button>
+            <button STYLE="background-color: #d02c2c" id="submit-button-2" type="button" class="btn btn-primary red-button" onclick="showConfirmDialog('Deny')">ปฏิเสธคำร้อง</button>
         </form>
     </div>
 </div>

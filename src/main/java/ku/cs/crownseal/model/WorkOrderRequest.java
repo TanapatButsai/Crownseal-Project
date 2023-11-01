@@ -10,5 +10,5 @@ public class WorkOrderRequest {
 
     private Member member;
 
-    private String workOrderDetailUrl;
+
 }

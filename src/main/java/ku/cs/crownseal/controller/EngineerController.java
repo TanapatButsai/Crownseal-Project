@@ -1,10 +1,12 @@
 package ku.cs.crownseal.controller;
 
 import ku.cs.crownseal.entity.WorkOrder;
+import ku.cs.crownseal.entity.WorkReportUrl;
 import ku.cs.crownseal.repository.CustomerRepository;
 import ku.cs.crownseal.repository.WorkOrderRepository;
 import ku.cs.crownseal.service.ProblemService;
 import ku.cs.crownseal.service.WorkOrderService;
+import ku.cs.crownseal.service.WorkReportUrlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -28,7 +30,8 @@ public class EngineerController {
     @Autowired
     ProblemService problemService;
 
-
+    @Autowired
+    WorkReportUrlService workReportUrlService;
     @GetMapping("/admin/engineer")
     public String getEngineerListPage(Model model){
 
@@ -51,11 +54,11 @@ public class EngineerController {
     }
     @PostMapping("/work/{workOrderId}/{problemID}/finish")
     public String finishProblem(@PathVariable UUID workOrderId
-            ,@PathVariable UUID problemID
-            ,@RequestParam("repairingReportUrl") String repairingReportUrl, Model model)
+            , @RequestParam("repairingReportUrl") String repairingReportUrl, Model model
+            , @PathVariable UUID problemID)
     {
         problemService.processedProblemByWorkOrder(problemID);
-        workOrderService.setWorkOrderUrlByProblemId(workOrderId,repairingReportUrl);
+        workReportUrlService.setRepairingReportUrlByWorkOrderID(workOrderId,repairingReportUrl);
         // Add logic to associate the uploaded file with the WorkOrder
         return "home";
     }

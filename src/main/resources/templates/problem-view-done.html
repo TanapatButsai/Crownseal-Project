@@ -40,7 +40,7 @@
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.timeStampStart}"></td>
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.getWorkOrder().getMember().getName()}"></td>
             <td style="text-align: center">
-                <a th:href="${problem.getWorkOrder().getRepairingReportUrl()}" target="_blank">
+                <a th:href="${problem.getWorkOrder().getWorkReportUrl().getRepairingReportUrl()}" target="_blank">
                     <button class="btn btn-primary">ดูรายงานซ่อมแซม</button>
                 </a>
             </td>
