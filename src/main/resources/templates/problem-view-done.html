@@ -34,7 +34,7 @@
         </thead>
         <tbody>
         <tr th:each="problem : ${problem}">
-            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.nameMachine}"></td>
+            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.machineNumber}"></td>
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.detail}"></td>
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.status}"></td>
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.timeStampStart}"></td>

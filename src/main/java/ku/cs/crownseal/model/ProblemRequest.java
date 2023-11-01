@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Data
 public class ProblemRequest {
 
-    private String nameMachine;
+    private String machineNumber;
     private String subject;
     private String detail;
     private LocalDateTime timestamp;
