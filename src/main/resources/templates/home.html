@@ -58,10 +58,6 @@
         <p>คุณ <b><span sec:authentication="name"></span></b></p>
         <a class="btn btn-primary" href="https://crownseal.co.th/about-csc">CROWN SEAL PUBLIC COMPANY LIMITED</a>
     </div>
-    <div sec:authorize="isAnonymous()">
-        <a class="btn btn-primary " th:href="@{/login}">Login</a>
-        <a class="btn btn-light" th:href="@{/signup}">Sign Up</a>
-    </div>
 
 </div>
 </body>

@@ -21,7 +21,7 @@
 <body>
     <div th:insert="~{fragments/header :: header}"></div>
 <div class="container w-50 p-3">
-    <h1 class="display-5">Login</h1>
+    <h1 class="display-5">เข้าสู่ระบบ</h1>
 
     <form th:action="@{/login}" method="POST">
         <div id="error-msg" th:if="${param.error}" class="alert alert-danger">
@@ -31,19 +31,19 @@
             You have been logged out
         </div>
         <div class="mb-3">
-            <label for="inputUsername">Username</label>
+            <label for="inputUsername">บัญชีผู้ใช้</label>
             <input type="text" name="username" id="inputUsername"
                    class="form-control" required>
         </div>
         <div class="mb-3">
-            <label for="inputPassword">Password</label>
+            <label for="inputPassword">รหัสผ่าน</label>
             <input type="password" name="password" id="inputPassword"
                    class="form-control" required>
             <label>
                 <input type="checkbox" onclick="passwordVisible()">
-            </label> Show Password
+            </label> ดูรหัสผ่าน
         </div>
-        <button id="submit-button" type="submit" class="btn btn-primary">Login</button>
+        <button id="submit-button" type="submit" class="btn btn-primary">เข้าสู่ระบบ</button>
     </form>
 </div>
 
