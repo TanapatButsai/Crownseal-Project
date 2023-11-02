@@ -112,7 +112,7 @@ public class AdminController {
     {
         model.addAttribute("problem", problemService.getByID(problemId));
         model.addAttribute("engineers", customerRepository.findMemberByRole("ROLE_ENGINEER"));
-        return "work_order_form";
+        return "work-order-form";
     }
 
     @PostMapping("/{problemId}/in-progress")
