@@ -30,6 +30,7 @@ public class HomeController {
         model.addAttribute("name",member.getName());
         model.addAttribute("username",member.getUsername());
         model.addAttribute("phone",member.getPhoneNumber());
+        model.addAttribute("role",member.getRole());
         return "profile"; // return หน้าฟอร์ม signup.html
     }
 
