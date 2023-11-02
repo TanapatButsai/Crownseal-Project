@@ -60,7 +60,7 @@ public class AdminController {
     @GetMapping("/processed")
     public String getAllProblemAlreadyProcessed(Model model) {
         model.addAttribute("problems", problemService.getAllProblemByStatus("ดำเนินการแล้ว"));
-        model.addAttribute("type","เสร็จสิ้้นจัดการโดยหัวหน้าวิศวะกร");
+        model.addAttribute("type","เสร็จสิ้นจัดการโดยหัวหน้าวิศวะกร");
 
         return "problem-in-progress";
     }

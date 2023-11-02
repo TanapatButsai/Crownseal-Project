@@ -20,7 +20,7 @@
             <th>รหัสเครื่องจักร</th>
             <th>แจ้งรายละเอียด</th>
             <th>สถานะ</th>
-            <th>ระยะเวลาที่รายงานปัญหา</th>
+            <th>เวลาที่รายงานปัญหา</th>
 
         </tr>
         </thead>
@@ -29,7 +29,7 @@
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.machineNumber}"></td>
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.detail}"></td>
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.status}"></td>
-            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.timeStampStart}"></td>
+            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${#temporals.format(problem.getTimeStampStart(), 'dd/MM/yyyy HH:mm')}"></td>
         </tr>
         </tbody>
     </table>
