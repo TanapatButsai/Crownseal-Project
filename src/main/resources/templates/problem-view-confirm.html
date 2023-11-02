@@ -41,7 +41,7 @@
     </tbody>
   </table>
   <div>
-    <button id="confirm-button" class="btn btn-warning" onclick="confirmAction('confirm-form')">มอบหมายทีมวิศวกร</button>
+    <button id="confirm-button" class="btn btn-warning" onclick="confirmAction('confirm-form')">มอบหมายหัวหน้าวิศวกร</button>
     <button id="finish-button" class="btn btn-danger " onclick="confirmAction('finish-form')">จบงาน</button>
     <form id="confirm-form" action="#" th:action="@{/admin/problems/{problemId}/in-progress(problemId=${problem.id})}" method="GET"
           style="display: none;">
