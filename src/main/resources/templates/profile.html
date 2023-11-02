@@ -16,19 +16,19 @@
     <h1 class="display-5" style="text-align: center;">ข้อมูลส่วนตัว</h1>
 
     <div class="display-6" style="text-align: -moz-right; font-size: 30px; margin:2rem">ชื่อ :
-        <span sec:authentication="name"></span>
+        <span th:text="${name}"></span>
     </div>
 
     <div  class="display-6" style="text-align: -moz-right; font-size: 30px; margin:2rem">อีเมล์ :
-        <span sec:authentication="name"></span>
+        <span th:text="${email}"></span>
     </div>
 
     <div class="display-6" style="text-align: -moz-right; font-size: 30px; margin:2rem">ชื่อผู้ใช้ :
-        <span sec:authentication="name"></span>
+        <span th:text="${username}"></span>
     </div>
 
     <div class="display-6" style="text-align: -moz-right; font-size: 30px; margin:2rem">เบอร์โทรศัพท์ :
-        <span sec:authentication="name"></span>
+        <span th:text="${phone}"></span>
     </div>
 
 </div>
