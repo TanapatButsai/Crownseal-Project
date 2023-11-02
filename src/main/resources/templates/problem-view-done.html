@@ -17,8 +17,32 @@
 </head>
 <body>
 <div th:insert="~{fragments/header :: header}"></div>
+<div class="container w-50 p-3" sec:authorize="isAuthenticated() and hasRole('ROLE_CUSTOMER')">
+    <h1 class="display-6">รายละเอียด</h1>
 
-<div class="container w-50 p-3">
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-dark">
+        <tr style="text-align: center; vertical-align: top; " class="table-secondary">
+            <th>รหัสเครื่องจักร</th>
+            <th>แจ้งรายละเอียด</th>
+            <th>สถานะ</th>
+            <th>ระยะเวลาที่รายงานปัญหา</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="problem : ${problem}">
+            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.getMachineNumber}"></td>
+            <td style="text-align: right; max-width: 200px; word-wrap: break-word;" th:text="${problem.detail}"></td>
+            <td style="text-align: right; max-width: 200px; word-wrap: break-word;" th:text="${problem.getDistrict()}"></td>
+            <td style="text-align: right; max-width: 200px; word-wrap: break-word;" th:text="${problem.id}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<!---->
+<div class="container w-50 p-3" sec:authorize="isAuthenticated() and hasRole('ROLE_MANAGER')">
     <h1 class="display-6">รายละเอียด</h1>
 
     <table class="table table-bordered table-striped table-hover">

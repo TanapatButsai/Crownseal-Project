@@ -50,13 +50,15 @@
 </div>
 <div class="container">
 
-    <h1 class="display-6">เว็ปไซด์ระบบรายงานปัญหาสำหรับลูกค้าโรงงานฝาจีบ</h1>
-    <h1 class="display-7">(Crownseal Application)</h1>
+
+    <h1 class="display-6">เว็ปไซด์ทดลองระบบรายงานปัญหาสำหรับลูกค้าโรงงานฝาจีบ</h1>
+
+
     <p><span th:text="${greeting}"></span></p>
 
     <div sec:authorize="isAuthenticated()">
         <p>คุณ <b><span sec:authentication="name"></span></b></p>
-        <a class="btn btn-primary" href="https://crownseal.co.th/about-csc">CROWN SEAL PUBLIC COMPANY LIMITED</a>
+
     </div>
 
 </div>
