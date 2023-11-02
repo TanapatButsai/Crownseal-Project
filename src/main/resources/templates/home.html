@@ -19,11 +19,20 @@
         }
 
         .banner-image {
+
+
+            padding: 2.5rem;
             width: 100%;
             height: auto;
             display: block;
             max-width: 100%;
         }
+
+        .banner-image img{
+            border-radius: 25px;
+            width: 75%;
+        }
+
         .container {
             text-align: center;
         }
@@ -50,7 +59,7 @@
         <a class="btn btn-primary" href="https://crownseal.co.th/about-csc">CROWN SEAL PUBLIC COMPANY LIMITED</a>
     </div>
     <div sec:authorize="isAnonymous()">
-        <a class="btn btn-primary" th:href="@{/login}">Login</a>
+        <a class="btn btn-primary " th:href="@{/login}">Login</a>
         <a class="btn btn-light" th:href="@{/signup}">Sign Up</a>
     </div>
 

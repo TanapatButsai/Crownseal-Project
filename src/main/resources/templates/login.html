@@ -5,6 +5,18 @@
     <title>CrownSeal Application</title>
     <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <script th:src="@{/js/bootstrap.min.js}"></script>
+
+    <script>
+        function passwordVisible() {
+            var x = document.getElementById("inputPassword");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+
+    </script>
 </head>
 <body>
     <div th:insert="~{fragments/header :: header}"></div>
@@ -27,6 +39,9 @@
             <label for="inputPassword">Password</label>
             <input type="password" name="password" id="inputPassword"
                    class="form-control" required>
+            <label>
+                <input type="checkbox" onclick="passwordVisible()">
+            </label> Show Password
         </div>
         <button id="submit-button" type="submit" class="btn btn-primary">Login</button>
     </form>

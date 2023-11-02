@@ -6,6 +6,26 @@
   <title>Crownseal Application</title>
   <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
   <script th:src="@{/js/bootstrap.min.js}"></script>
+
+  <script>
+    function passwordVisible() {
+      var x = document.getElementById("inputPassword-2");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+
+    function passwordVisibleEngineer() {
+      var x = document.getElementById("inputPassword");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+  </script>
 </head>
 <body>
   <div th:insert="~{fragments/header :: header}"></div>
@@ -16,7 +36,7 @@
 <!-------------------------------------------------------engineer-->
 
   <form action="#" sec:authorize="isAuthenticated() and hasRole('ROLE_MANAGER')" th:action="@{/signup/engineer}" method="POST">
-    <h1 class="display-5">สมัครสำหรับวิศวะกร</h1>
+    <h1 style="text-align: center" class="display-5">สมัครสำหรับวิศวะกร</h1>
     <div id="success-msg" class="alert alert-success"
          th:if="${signupSuccess}">
       Successfully signed up! Please <a th:href="@{/login}">login</a>.
@@ -41,6 +61,9 @@
       <label for="inputPassword">Password</label>
       <input id="inputPassword" type="password" class="form-control"
              name="password" required>
+      <label>
+        <input type="checkbox" onclick="passwordVisibleEngineer()">
+      </label> Show Password
     </div>
     <div class="mb-3">
       <label for="inputPassword">Email</label>
@@ -79,11 +102,16 @@
         <input id="inputUsername-2" type="input" class="form-control"
                name="username" required>
       </div>
+
       <div class="mb-3">
         <label for="inputPassword-2">Password</label>
         <input id="inputPassword-2" type="password" class="form-control"
                name="password" required>
+        <label>
+          <input type="checkbox" onclick="passwordVisible()">
+        </label> Show Password
       </div>
+
       <div class="mb-3">
         <label for="inputPassword-2">Email</label>
         <input id="inputEmail-2" type="email" class="form-control"

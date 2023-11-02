@@ -18,6 +18,8 @@
 <div class="container w-50 p-3">
     <h1 class="display-5" style="text-align: center;">Report Problem</h1>
 
+    <label style="color: #000000;font-size: 25px;" >-ข้อมูลเครื่องจักร-</label>
+
     <form action="#" th:action="@{/problems/add}" method="POST" onsubmit="return confirmSubmission();">
         <div class="mb-3">
             <label for="inputName">รหัสของเครื่องจักร</label>
@@ -36,7 +38,7 @@
                       name="detail" required rows="5" cols="50"></textarea>
         </div>
 
-            <label >แจ้งสถานที่ที่ชำรุด----------</label>
+            <label style="color: #000000;font-size: 25px;" >-แจ้งสถานที่ที่ชำรุด-</label>
 
         <div class="mb-3">
             <label for="inputlocationName">ชื่อของที่อยู่</label>
@@ -51,13 +53,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="inputsubDistrict">แขวง</label>
-            <input id="inputsubDistrict" type="input" class="form-control"
-                   name="subDistrict" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="inputdistrict">แขต</label>
+            <label for="inputdistrict">เขต</label>
             <input id="inputdistrict" type="input" class="form-control"
                    name="district" required>
         </div>
