@@ -36,7 +36,8 @@ public class EngineerController {
     public String getEngineerListPage(Model model){
 
         model.addAttribute("engineers", customerRepository.findMemberByRole("ROLE_ENGINEER"));
-
+        model.addAttribute("engineerWorkCountText"," :มีงานที่รับผิดชอบอยู่:");
+        model.addAttribute("workText","งาน");
         return "engineer-list";
     }
 

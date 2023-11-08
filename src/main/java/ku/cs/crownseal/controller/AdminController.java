@@ -113,6 +113,8 @@ public class AdminController {
     {
         model.addAttribute("problem", problemService.getByID(problemId));
         model.addAttribute("engineers", customerRepository.findMemberByRole("ROLE_ENGINEER"));
+        model.addAttribute("engineerWorkCountText"," : มีงานที่รับผิดชอบอยู่: ");
+        model.addAttribute("workText"," งาน");
         return "work-order-form";
     }
 

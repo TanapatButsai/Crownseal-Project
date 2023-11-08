@@ -32,7 +32,7 @@
     </thead>
     <tbody>
     <tr th:each="order : ${order}">
-      <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${order.getWork_detail()}"></td>
+      <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${order.work_detail}"></td>
       <td style="text-align: right; max-width: 200px; word-wrap: break-word; "  th:text="${order.getProblem().getMachineNumber}"></td>
       <td style="text-align: right; max-width: 200px; word-wrap: break-word;" th:text="${location}"></td>
       <td style="text-align: center">
