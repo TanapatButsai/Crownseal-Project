@@ -24,6 +24,12 @@ public class Member {
     private String email;
     private String phoneNumber;
 
+    private String locationName;
+    private String locationDetail;
+    private String district;
+    private String province;
+    private String postalCode;
+
     @OneToMany(mappedBy = "member") //
     private List<Problem> ProblemList = new ArrayList<>();
 

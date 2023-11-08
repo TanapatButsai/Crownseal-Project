@@ -11,5 +11,10 @@ public class SignupRequest {
     private String name;
     private String email;
     private String phoneNumber;
+    private String locationName;
+    private String locationDetail;
+    private String district;
+    private String province;
+    private String postalCode;
 
 }

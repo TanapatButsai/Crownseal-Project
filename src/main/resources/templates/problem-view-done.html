@@ -26,7 +26,7 @@
             <th>รหัสเครื่องจักร</th>
             <th>แจ้งรายละเอียด</th>
             <th>สถานะ</th>
-            <th>เวลาที่รายงานปัญหา</th>
+            <th>ที่อยู่</th>
 
         </tr>
         </thead>
@@ -35,7 +35,7 @@
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.getMachineNumber}"></td>
             <td style="text-align: right; max-width: 200px; word-wrap: break-word;" th:text="${problem.detail}"></td>
             <td style="text-align: right; max-width: 200px; word-wrap: break-word;" th:text="${problem.getStatus()}"></td>
-            <td style="text-align: right; max-width: 200px; word-wrap: break-word;" th:text="${#temporals.format(problem.getTimeStampStart, 'dd/MM/yyyy HH:mm')}"></td>
+            <td style="text-align: right; max-width: 200px; word-wrap: break-word;" th:text="${location}"></td>
         </tr>
         </tbody>
     </table>
@@ -51,7 +51,7 @@
             <th>รหัสเครื่องจักร</th>
             <th>แจ้งรายละเอียด</th>
             <th>สถานะ</th>
-            <th>วันที่รายงานปัญหา</th>
+            <th>ที่อยู่</th>
             <th>หัวหน้าวิศวะกรผู้รับผิดชอบ</th>
             <th>Action</th>
         </tr>
@@ -61,7 +61,7 @@
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.machineNumber}"></td>
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.detail}"></td>
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.status}"></td>
-            <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${#temporals.format(problem.getTimeStampStart, 'dd/MM/yyyy HH:mm')}"></td>
+            <td style="text-align: right; max-width: 200px; word-wrap: break-word;" th:text="${location}"></td>
             <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${problem.getWorkOrder().getMember().getName()}"></td>
             <td style="text-align: center">
                 <a th:href="${problem.getWorkOrder().getWorkReportUrl().getRepairingReportUrl()}" target="_blank">

@@ -7,25 +7,7 @@
   <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
   <script th:src="@{/js/bootstrap.min.js}"></script>
 
-  <script>
-    function passwordVisible() {
-      var x = document.getElementById("inputPassword-2");
-      if (x.type === "password") {
-        x.type = "text";
-      } else {
-        x.type = "password";
-      }
-    }
 
-    function passwordVisibleEngineer() {
-      var x = document.getElementById("inputPassword");
-      if (x.type === "password") {
-        x.type = "text";
-      } else {
-        x.type = "password";
-      }
-    }
-  </script>
 </head>
 <body>
   <div th:insert="~{fragments/header :: header}"></div>
@@ -122,7 +104,7 @@
         <input id="inputPhone-2" type="input" class="form-control"
                name="phoneNumber" required>
       </div>
-      <label style="color: #000000;font-size: 25px;" >-แจ้งสถานที่ที่ชำรุด-</label>
+      <label style="color: #000000;font-size: 25px;" >-แจ้งสถานที่ของบริษัท-</label>
 
       <div class="mb-3">
         <label for="inputlocationName">ชื่อของที่อยู่</label>
@@ -159,4 +141,36 @@
   </div>
 
 </body>
+<script>
+  function limitToFiveDigits(input) {
+    var value = input.value;
+    // Remove any non-numeric characters using a regular expression
+    value = value.replace(/\D/g, '');
+
+    // Ensure the value is not longer than 5 characters
+    if (value.length > 5) {
+      value = value.substring(0, 5);
+    }
+
+    input.value = value;
+  }
+
+  function passwordVisible() {
+    var x = document.getElementById("inputPassword-2");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
+  function passwordVisibleEngineer() {
+    var x = document.getElementById("inputPassword");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+</script>
 </html>

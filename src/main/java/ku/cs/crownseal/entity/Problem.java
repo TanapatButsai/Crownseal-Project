@@ -22,11 +22,6 @@ public class Problem {
     private LocalDateTime timeStampFinish;
     private String status;
 
-    private String locationName;
-    private String locationDetail;
-    private String district;
-    private String province;
-    private String postalCode;
 
     @ManyToOne
     @JoinColumn(name = "member_id") // "member_id" is the foreign key column in the PurchaseOrder table

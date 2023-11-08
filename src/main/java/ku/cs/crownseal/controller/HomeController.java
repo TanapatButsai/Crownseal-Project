@@ -31,6 +31,11 @@ public class HomeController {
         model.addAttribute("username",member.getUsername());
         model.addAttribute("phone",member.getPhoneNumber());
         model.addAttribute("role",member.getRole());
+        model.addAttribute("locationName",member.getLocationName());
+        model.addAttribute("locationDetail",member.getLocationDetail());
+        model.addAttribute("province",member.getProvince());
+        model.addAttribute("postalCode",member.getPostalCode());
+        model.addAttribute("district",member.getDistrict());
         return "profile"; // return หน้าฟอร์ม signup.html
     }
 }

@@ -74,6 +74,7 @@ public class AdminController {
     @GetMapping("/{id}")
     public String getProblems(@PathVariable UUID id, Model model) {
         model.addAttribute("problem", problemService.getByID(id));
+        model.addAttribute("location", problemService.getLocation(id));
         if (problemService.getByID(id).getStatus().equals("ยังไม่ดำเนินการ")) {
             return "problem-view-new";
         }else if (problemService.getByID(id).getStatus().equals("รับเรื่อง")){

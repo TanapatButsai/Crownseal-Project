@@ -14,10 +14,4 @@ public class ProblemRequest {
     private String detail;
     private LocalDateTime timestamp;
     private String status;
-
-    private String locationName;
-    private String locationDetail;
-    private String district;
-    private String province;
-    private String postalCode;
 }

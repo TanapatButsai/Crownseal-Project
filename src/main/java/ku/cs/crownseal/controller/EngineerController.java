@@ -50,6 +50,7 @@ public class EngineerController {
     @GetMapping("/work/my/{workOrderId}")
     public String getWorkOrderView(@PathVariable UUID workOrderId,Model model){
         model.addAttribute("order", workOrderService.getWorkOrderById(workOrderId));
+        model.addAttribute("location",workOrderService.getWorkOrderLocation(workOrderId));
         return "work-order-view";
     }
     @PostMapping("/work/{workOrderId}/{problemID}/finish")

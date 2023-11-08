@@ -43,6 +43,14 @@ public class ProblemService {
     public List<Problem> getMemberProblem(String name) {
         return customerRepository.findByUsername(name).getProblemList();
     }
+    public String getLocation(UUID id){
+        String locationName = problemRepository.findById(id).get().getMember().getLocationName();
+        String locationDetail = problemRepository.findById(id).get().getMember().getLocationDetail();
+        String province = problemRepository.findById(id).get().getMember().getProvince();
+        String district = problemRepository.findById(id).get().getMember().getDistrict();
+        String postal = problemRepository.findById(id).get().getMember().getPostalCode();
+        return locationName + " " + locationDetail + " " + province + " " + district + " " + postal;
+    }
     public void createProblem(ProblemRequest request,String name) {
         Problem record = modelMapper.map(request, Problem.class);
         record.setMember(customerRepository.findByUsername(name));

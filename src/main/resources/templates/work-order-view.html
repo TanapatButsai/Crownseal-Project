@@ -34,15 +34,7 @@
     <tr th:each="order : ${order}">
       <td style="text-align: right; max-width: 200px; word-wrap: break-word; " th:text="${order.getWork_detail()}"></td>
       <td style="text-align: right; max-width: 200px; word-wrap: break-word; "  th:text="${order.getProblem().getMachineNumber}"></td>
-      <td style="text-align: right; max-width: 200px; word-wrap: break-word;">
-        <span th:utext="${order.getProblem().getLocationName()}"></span><br>
-        <span th:utext="${order.getProblem().getLocationDetail()}"></span><br>
-        <span th:utext="${order.getProblem().getDistrict()}"></span><br>
-        <span th:utext="${order.getProblem().getProvince()}"></span><br>
-        <span th:utext="${order.getProblem().getPostalCode()}"></span>
-
-      </td>
-
+      <td style="text-align: right; max-width: 200px; word-wrap: break-word;" th:text="${location}"></td>
       <td style="text-align: center">
         <a th:href="${order.getWorkReportUrl().getWorkOrderDetailUrl()}" target="_blank">
           <button class="btn btn-primary">แสดงใบงาน</button>

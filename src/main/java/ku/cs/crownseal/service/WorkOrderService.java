@@ -46,6 +46,14 @@ public class WorkOrderService {
     public List<WorkOrder> getWorkOrderListByMember(String username){
         return workOrderRepository.findAllByMemberUsernameAndProblemStatus(username,"กำลังดำเนินการ");
     }
+    public String getWorkOrderLocation(UUID uuid){
+        String locationName = workOrderRepository.findById(uuid).get().getProblem().getMember().getLocationName();
+        String locationDetail = workOrderRepository.findById(uuid).get().getProblem().getMember().getLocationDetail();
+        String province = workOrderRepository.findById(uuid).get().getProblem().getMember().getProvince();
+        String district = workOrderRepository.findById(uuid).get().getProblem().getMember().getDistrict();
+        String postal = workOrderRepository.findById(uuid).get().getProblem().getMember().getPostalCode();
+        return locationName + " " + locationDetail + " " + province + " " + district + " " + postal;
+    }
     public WorkOrder getWorkOrderById(UUID id){
 
         return workOrderRepository.findById(id).get();
