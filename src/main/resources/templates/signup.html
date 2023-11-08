@@ -96,13 +96,13 @@
 
       <div class="mb-3">
         <label for="inputPassword-2">อีเมล</label>
-        <input id="inputEmail-2" type="email" class="form-control"
+        <input id="inputEmail-2" type="email"  class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                name="email" required>
       </div>
       <div class="mb-3">
         <label for="inputPassword-2">เบอร์โทรศัพท์</label>
-        <input id="inputPhone-2" type="input" class="form-control"
-               name="phoneNumber" required>
+        <input id="inputPhone-2" type="text" class="form-control"  inputmode="numeric" placeholder="0124567890" oninput="limitToTenDigits(10)"
+               name="phoneNumber" required pattern="\d{10,10}(-\d{9,9})?">
       </div>
       <label style="color: #000000;font-size: 25px;" >-แจ้งสถานที่ของบริษัท-</label>
 
@@ -132,8 +132,8 @@
 
       <div class="mb-3">
         <label for="inputpostalCode">ไปรษณีย์</label>
-        <input id="inputpostalCode" type="text" class="form-control " inputmode="numeric" pattern="\d{0,5}" oninput="limitToFiveDigits(5)"
-               name="postalCode" required>
+        <input id="inputpostalCode" type="text" class="form-control " inputmode="numeric"  oninput="limitToFiveDigits(5)"
+               name="postalCode" required pattern="\d{5,5}(-\d{4,4})?">
       </div>
 
       <button id="submit-button-2" type="submit" class="btn btn-primary">สมัครสมาชิก</button>
@@ -150,6 +150,19 @@
     // Ensure the value is not longer than 5 characters
     if (value.length > 5) {
       value = value.substring(0, 5);
+    }
+
+    input.value = value;
+  }
+
+  function limitToTenDigits(input) {
+    var value = input.value;
+    // Remove any non-numeric characters using a regular expression
+    value = value.replace(/\D/g, '');
+
+    // Ensure the value is not longer than 10 characters
+    if (value.length > 10) {
+      value = value.substring(0, 10);
     }
 
     input.value = value;
@@ -172,5 +185,6 @@
       x.type = "password";
     }
   }
+
 </script>
 </html>
