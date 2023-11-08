@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,600;6..12,700&family=Nunito:wght@200;300;400;600;700&display=swap');
+
+:root{
+    --body-bg: rgba(243, 153, 95, 0.34);
+    --white : #ffffff;
+    --darkWhite: #ccc;
+    --black : #000000;
+    --dark : #615c60;
+    --themeColor : rgba(220, 145, 104, 0.93);
+    --pageShadow : 0 0 0.5cm rgba(0,0,0,0.5);
+    --red : rgba(239, 119, 53, 0.92);
+}
+
+*{
+    font-family: 'Nunito', sans-serif;
+
+}
+.navbar{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #fff3cd;
+    padding: 1rem 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+}
+
+.navbar a{
+
+    font-size : 1.2rem;
+    border-radius: .5rem;
+    padding:.5rem 1.5rem;
+    color:var(--light-color);
+
+}
+
+.navbar a .nav-item{
+
+    font-size : 1.2rem;
+    border-radius: .5rem;
+    padding:.5rem 1.5rem;
+    color:var(--light-color);
+
+}
+
+.navbar.active{
+
+    clip-path: polygon(0 0 ,100% 0 ,100% 100% ,0 100%);
+
+}
+
+
+.navbar a.active,
+.navbar a:hover{
+
+    color:#fff;
+    background: var(--red);
+
+}
+
+.btn {
+
+    display: inline-block;
+    font-size: 0.75rem;
+    color: #fff;
+    background: var(--black);
+    border-radius: .5rem;
+    cursor: pointer;
+    padding:.6rem 1rem;
+
+}
+
+.btn:hover{
+
+    background: var(--red);
+
+}
+
+body{
+    background-color: var(--body-bg);
+}
+
+.page{
+    background: var(--white);
+    display: block;
+    margin: 0  auto;
+    position: relative;
+    box-shadow: var(--pageShadow);
+}
+
+.page[size = "A4"]{
+    width: 21cm;
+    height: 29.7cm;
+    overflow:hidden;
+}
+
+.bb{
+    border-bottom: 3px solid var(--darkWhite);
+}
+
+/* Top Section */
+.top-content{
+    padding-bottom: 15px;
+}
+
+.logo img{
+    height: 60px;
+}
+
+.top-left p{
+    margin: 0;
+}
+
+.top-left .graphic-path{
+    height: 40px;
+    position: relative;
+}
+
+.top-left .graphic-path::before{
+    content:"";
+    height: 20px;
+    background-color: var(--dark);
+    position: absolute;
+    left : 15px;
+    right: 0;
+    top: -15px;
+    z-index: 2;
+}
+
+.top-left .graphic-path::after{
+    content:"";
+    height: 22px;
+    width: 17px;
+    background:var(--black);
+    position: absolute;
+    top: -13px;
+    left: 6px;
+    transform: rotate(45deg);
+}
+
+.top-left .graphic-path p {
+    color: var(--white);
+    height: 40px;
+    left: 0;
+    right: -100px;
+    text-transform: uppercase;
+    background-color: var(--themeColor);
+    font: 26px;
+    z-index: 3;
+    position: absolute;
+    padding-left: 10px;
+}
+
+/* User Store Section */
+
+.store-user {
+    padding-bottom: 25px;
+
+}
+
+.store-user p {
+    margin: 0;
+    font-weight: 600;
+}
+
+.store-user .address{
+    font-weight: 400;
+}
+
+.store-user h2{
+    color: var(--themeColor);
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.extra-info p span{
+    font-weight: 400;
+}
+
+/* Product Section */
+
+thead {
+    color: var(--white);
+    background: var(--themeColor);
+}
+
+.table td,
+.table th{
+    text-align: center;
+    vertical-align: middle;
+}
+
+tr th:first-child,
+tr td:first-child{
+    text-align: left;
+}
+
+.media img{
+    height: 60px;
+    width: 60px;
+}
+
+.media p {
+    font-weight: 400;
+    margin: 0;
+}
+
+.media p.title{
+    font-weight: 600;
+}
+
+/* Balance Info Section */
+
+.balance-info .table td,
+.balance-info .table th{
+    padding : 0;
+    border: 0;
+}
+
+.balance-info tr td:first-child{
+    font-weight: 600;
+}
+
+tfoot{
+    border-top: 2px solid var(--darkWhite);
+}
+
+tfoot td{
+    font-weight: 600;
+}
+
+/* Footer Section*/
+
+footer{
+    text-align: center;
+}
+
+footer hr{
+    border-top: 3px solid var(--darkWhite);
+}
+
+footer p {
+    padding : 6px;
+    border: 3px solid var(--darkWhite);
+    background-color: var(--white);
+    display: inline-block;
+
+}
+
+/* Cart BG*/
+
+.cart-bg{
+    position: absolute;
+    height: 250px;
+    bottom: 50px;
+    left: 25px;
+    width: 25%;
+    opacity: 0.3
+
+
+}

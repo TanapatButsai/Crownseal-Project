@@ -16,6 +16,7 @@
 
 
 <div class="container w-50 p-3">
+
     <h1 class="display-5" style="text-align: center;">Report Problem</h1>
 
     <label style="color: #000000;font-size: 25px;" >-ข้อมูลเครื่องจักร-</label>
@@ -66,7 +67,7 @@
 
         <div class="mb-3">
             <label for="inputpostalCode">ไปรษณีย์</label>
-            <input id="inputpostalCode" type="input" class="form-control "
+            <input id="inputpostalCode" type="text" class="form-control " inputmode="numeric" pattern="\d{0,5}" oninput="limitToFiveDigits(5)"
                    name="postalCode" required>
         </div>
         <button id="submit-button" type="submit" class="btn btn-primary">รายงานปัญหา</button>
@@ -74,4 +75,18 @@
 </div>
 
 </body>
+<script>
+    function limitToFiveDigits(input) {
+        var value = input.value;
+        // Remove any non-numeric characters using a regular expression
+        value = value.replace(/\D/g, '');
+
+        // Ensure the value is not longer than 5 characters
+        if (value.length > 5) {
+            value = value.substring(0, 5);
+        }
+
+        input.value = value;
+    }
+</script>
 </html>

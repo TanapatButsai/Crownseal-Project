@@ -33,5 +33,4 @@ public class HomeController {
         model.addAttribute("role",member.getRole());
         return "profile"; // return หน้าฟอร์ม signup.html
     }
-
 }
