@@ -85,5 +85,8 @@ public class ProblemService {
         record.setStatus("กำลังดำเนินการ");
         problemRepository.save(record);
     }
-
+    public List<Problem> getAllStatusNotDeny(){
+        return problemRepository.findAllByStatusNot("ไม่รับเรื่อง");
+    }
 }
+

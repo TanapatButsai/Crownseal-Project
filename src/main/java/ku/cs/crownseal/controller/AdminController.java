@@ -32,7 +32,7 @@ public class AdminController {
 
     @GetMapping("/all")
     public String getAllProblem(Model model) {
-        model.addAttribute("problems", problemService.getAllProblem());
+        model.addAttribute("problems", problemService.getAllStatusNotDeny());
         model.addAttribute("type","เรื่องทั้งหมด");
         return "problem-all";
     }

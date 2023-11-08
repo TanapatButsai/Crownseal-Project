@@ -14,4 +14,6 @@ import java.util.UUID;
 public interface ProblemRepository extends JpaRepository<Problem, UUID> {
     Problem findAllByStatus(String status);
     List<Problem> findProblemsByStatus(String status);
+
+    List<Problem> findAllByStatusNot(String status);
 }
