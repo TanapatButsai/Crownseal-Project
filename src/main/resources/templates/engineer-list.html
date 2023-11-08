@@ -30,7 +30,7 @@
             <th>ชื่อ</th>
             <th>เบอร์โทรศัพท์</th>
             <th>อีเมล</th>
-
+            <th>จำนวนงานปัจจุบัน</th>
         </tr>
         </thead>
         <tbody>
@@ -38,6 +38,7 @@
             <td th:text="${engineer.getName()}"></td>
             <td th:text="${engineer.getPhoneNumber()}"></td>
             <td th:text="${engineer.getEmail()}"></td>
+            <td th:text="${engineer.getWorkOrderListCount()}"></td>
 <!--            <td th:text="${problem.detail}"></td>-->
 <!--            <td th:text="${problem.locationName}"></td>-->
 <!--            <td th:text="${problem.getStatus()}"></td>-->

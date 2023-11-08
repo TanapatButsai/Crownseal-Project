@@ -33,6 +33,16 @@ public class Member {
     @OneToMany(mappedBy = "member") //
     private List<Problem> ProblemList = new ArrayList<>();
 
+    public int getWorkOrderListCount() {
+        int count = 0;
+        for (WorkOrder workOrder : workOrderList) {
+            if (workOrder.getProblem().getStatus().equals("กำลังดำเนินการ")) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     @OneToMany(mappedBy = "member") // Defines the relationship
     private List<WorkOrder> workOrderList =  new ArrayList<>();
 
